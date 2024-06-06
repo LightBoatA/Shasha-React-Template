@@ -1,20 +1,17 @@
 import React, { useCallback, useMemo } from 'react';
 import './index.less';
-import { useSelector, useDispatch } from "react-redux";
-import { updateNumber } from '../../redux/numberSlice';
-import { StoreState } from '../../redux/store';
+import { useNumber } from '../../hooks/useNumber';
 
 interface IProps {
 
 }
 export const Home: React.FC<IProps> = props => {
 
-  const number = useSelector((state: StoreState) => state.number.value);
-  const dispatch = useDispatch();
+  const { number, updateNumber } = useNumber();
 
   const handleClick = useCallback(() => {
-    dispatch(updateNumber(8642))
-  }, [dispatch])
+    updateNumber(8642);
+  }, [updateNumber])
 
   return useMemo(() => {
     return (

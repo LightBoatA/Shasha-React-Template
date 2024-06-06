@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { StoreState } from './store';
 
 export type INumber = {
     value: number;
@@ -16,5 +17,9 @@ export const numberSlice = createSlice({
     }
 })
 
-export const { updateNumber } = numberSlice.actions;
+// actions 外部进行dispatch
+export const numberActions = numberSlice.actions;
+
+// 提供外部使用
+export const numberSelector = (state: StoreState) => state.number.value;
 export default numberSlice.reducer;
